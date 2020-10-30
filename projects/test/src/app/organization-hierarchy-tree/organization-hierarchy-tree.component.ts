@@ -236,8 +236,9 @@ const json = {
 
 @Component({
   selector: 'app-organization-hierarchy-tree',
-  templateUrl: './organization-hierarchy-tree.component.html',
-  styleUrls: ['./organization-hierarchy-tree.component.css']
+  template:     
+  `<div class="organization-structure">{{data}}</div>`,
+  styleUrls: []
 })
 export class OrganizationHierarchyTreeComponent implements OnInit {
 
