@@ -4,7 +4,7 @@ import {OrganizationHierarchyTreeService} from './organization-hierarchy-tree.se
 @Component({
   selector: 'app-organization-hierarchy-tree',
   template: `
-    <div class="organization-structure">{{organizationHierarchy}}</div>`,
+    <div class="organization-structure">{{organizationHierarchy[0].name}}</div>`,
   styleUrls: []
 })
 export class OrganizationHierarchyTreeComponent implements OnInit {
@@ -18,8 +18,7 @@ export class OrganizationHierarchyTreeComponent implements OnInit {
         this.getOrganizationHierarchy();
     }
 
-    getOrganizationHierarchy(): void {
-        this.organizationHierarchy = this.organizationHierarchyTreeService.getOrganizationHierarchy().data;
+    getOrganizationHierarchy() {
+        this.organizationHierarchy = this.organizationHierarchyTreeService.getOrganizationHierarchy();
     }
-
 }
