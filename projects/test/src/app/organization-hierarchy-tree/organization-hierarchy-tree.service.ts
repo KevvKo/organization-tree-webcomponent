@@ -7,10 +7,9 @@ import json from './tree-mock.json';
 
 export class OrganizationHierarchyTreeService {
 
-  root: object[];
+  root: Array<object> = [];
 
   constructor() {
-    this.root = [];
     this.buildTree();
    }
 
@@ -65,7 +64,7 @@ export class OrganizationHierarchyTreeService {
     }
   }
 
-  getOrganizationHierarchy(): {}{
+  getOrganizationHierarchy(): Array<object>{
 
     return this.root;
   }
