@@ -1,4 +1,5 @@
 import { Injectable, ɵConsole } from '@angular/core';
+import {Node} from './node';
 import json from './tree-mock.json';
 
 @Injectable({
@@ -16,11 +17,11 @@ export class OrganizationHierarchyTreeService {
   buildTree(): void{
 
     // 1. build a simple array, which contains less information
-    const nodes = [];
+    const nodes: Array<Node> = [];
 
     json.data.forEach(el => {
 
-      const node = {
+      const node: Node = {
         id:     el.id,
         name:   el.attributes.name,
         parentId: null,
@@ -40,19 +41,15 @@ export class OrganizationHierarchyTreeService {
       id: null
     };
 
-    let node = {
-      name: null,
-      parentId: null,
-      children: []
-    };
-
+    // initialize the map for the correct assignment
     for (let i = 0, l = nodes.length; i < l; i += 1) {
-      map[nodes[i].id] = i; // initialize the map
+      map[nodes[i].id] = i;
     }
 
+    // creating the organization hierarchy-tree as object
     for (let i = 0, l = nodes.length; i < l; i += 1) {
 
-      node = nodes[i];
+      const node: Node = nodes[i];
 
       if (node.parentId !== null) {
 

@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {OrganizationHierarchyTreeService} from './organization-hierarchy-tree.service';
 
 @Component({
   selector: 'app-organization-hierarchy-tree',
   template: `
         <div class="organization-hierarchy-tree">
-          <app-tree-view [children]="organizationHierarchy"></app-tree-view>
+          <app-tree-view [items]="organizationHierarchy"></app-tree-view>
         </div>`,
 
   styles: []

@@ -1,21 +1,20 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ChildrenOutletContexts } from '@angular/router';
 
 @Component({
   selector: 'app-tree-view',
   template: `
     <ul >
-      <li *ngFor="let node of children">
-        {{node.name}}
-        <app-tree-view [children]="node.children"></app-tree-view>
+      <li *ngFor="let item of items">
+        {{item.name}}
+        <app-tree-view [items]="item.children"></app-tree-view>
       </li>
     </ul>`,
 
-  styleUrls: []
+  styles: []
 })
 export class TreeViewComponent implements OnInit {
 
-  @Input() children;
+  @Input() items;
 
   constructor() { }
 
