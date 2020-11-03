@@ -6,7 +6,7 @@ import json from './tree-mock.json';
   providedIn: 'root'
 })
 
-export class OrganizationHierarchyTreeService {
+export class OrganizationHierarchyTreeService { 
 
   root: Array<object> = [];
 
