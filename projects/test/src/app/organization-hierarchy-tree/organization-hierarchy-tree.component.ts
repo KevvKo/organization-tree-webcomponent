@@ -1,27 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import {OrganizationHierarchyTreeService} from './organization-hierarchy-tree.service';
 
 @Component({
   selector: 'app-organization-hierarchy-tree',
-  template: `
-        <div class="organization-hierarchy-tree">
-          <app-tree-view [items]="organizationHierarchy"></app-tree-view>
-        </div>`,
-
-  styles: []
+  templateUrl: './organization-hierarchy-tree.component.html',
+  styleUrls: ['./organization-hierarchy-tree.component.css']
 })
-
 export class OrganizationHierarchyTreeComponent implements OnInit {
 
     constructor(private organizationHierarchyTreeService: OrganizationHierarchyTreeService) { }
+    
+    organizationHierarchy: {};
 
-    organizationHierarchy: Array<object>;
-
-    ngOnInit(): void{
-        this.getOrganizationHierarchy();
+    ngOnInit(){
+        this.getOrganizationHierarchy()
     }
 
     getOrganizationHierarchy(): void {
         this.organizationHierarchy = this.organizationHierarchyTreeService.getOrganizationHierarchy();
     }
+
 }

@@ -2,15 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tree-view',
-  template: `
-    <ul >
-      <li *ngFor="let item of items">
-        {{item.name}}
-        <app-tree-view [items]="item.children"></app-tree-view>
-      </li>
-    </ul>`,
-
-  styles: []
+  templateUrl: './tree-view.component.html',
+  styleUrls: ['./tree-view.component.html']
 })
 export class TreeViewComponent implements OnInit {
 
