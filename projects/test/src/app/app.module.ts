@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, DoBootstrap, Injector } from '@angular/core';
-import { OrganizationHierarchyTreeComponent } from './organization-hierarchy-tree/organization-hierarchy-tree.component';
+import { TreeviewModule } from 'ngx-treeview';
 import { createCustomElement } from '@angular/elements';
-import { TreeViewComponent } from './organization-hierarchy-tree/tree-view/tree-view.component';
+
+import { OrganizationHierarchyTreeComponent } from './organization-hierarchy-tree/organization-hierarchy-tree.component';
 
 @NgModule({
-  declarations:     [OrganizationHierarchyTreeComponent, TreeViewComponent],
-  imports:          [BrowserModule],
+  declarations:     [OrganizationHierarchyTreeComponent],
+  imports:          [BrowserModule, TreeviewModule.forRoot()],
   entryComponents:  [OrganizationHierarchyTreeComponent]
 })
 

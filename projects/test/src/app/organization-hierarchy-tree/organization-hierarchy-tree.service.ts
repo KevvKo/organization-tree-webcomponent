@@ -1,14 +1,14 @@
 import { Injectable, ɵConsole } from '@angular/core';
-import {Node} from './node';
+import {Node, NodeTree} from './node';
 import json from './tree-mock.json';
-
+import { TreeItem, TreeviewItem } from 'ngx-treeview';
 @Injectable({
   providedIn: 'root'
 })
 
-export class OrganizationHierarchyTreeService { 
+export class OrganizationHierarchyTreeService {
 
-  root: Array<object> = [];
+  item: TreeviewItem[] = []
 
   constructor() {
     this.buildTree();
@@ -17,52 +17,75 @@ export class OrganizationHierarchyTreeService {
   buildTree(): void{
 
     // 1. build a simple array, which contains less information
-    const nodes: Array<Node> = [];
+    const nodes: NodeTree[] = [];
+    const trees: TreeItem[] = [];
 
     json.data.forEach(el => {
 
-      const node: Node = {
+      const nodeElement: Node = {
         id:     el.id,
-        name:   el.attributes.name,
-        parentId: null,
+        name:   el.attributes.name ?? 'unknwown',
+        description: el.attributes.description ?? 'unknown',
+        organization: el.relationships.organization.data.id
+      };
+
+      const nodeTree: NodeTree = {
+        id:     el.id,
+        node:   nodeElement,
+        parentId: !el.relationships.parentNode.data
+        ? 'unknown'
+        : el.relationships.parentNode.data.id,
         children: []
       };
 
-      if (el.relationships.parentNode.data !== null) {
+      const item = this.mapTreeViewItem(nodeElement);
 
-        node.parentId = el.relationships.parentNode.data.id;
-      }
-
-      nodes.push(node);
+      trees.push(item);
+      nodes.push(nodeTree);
     });
 
-
-    const map = {
-      id: null
-    };
+    const mapIds = {};
 
     // initialize the map for the correct assignment
     for (let i = 0, l = nodes.length; i < l; i += 1) {
-      map[nodes[i].id] = i;
+      mapIds[nodes[i].id] = i;
     }
 
     // creating the organization hierarchy-tree as object
     for (let i = 0, l = nodes.length; i < l; i += 1) {
 
-      const node: Node = nodes[i];
+      const nodeTree: NodeTree = nodes[i];
+      const treeItem: TreeItem = trees[i];
 
-      if (node.parentId !== null) {
+      if (nodeTree.parentId !== 'unknown') {
 
-        nodes[map[node.parentId]].children.push(node);
+        trees[mapIds[nodeTree.parentId]].children.push(treeItem);
+
       } else {
 
-        this.root.push(node);
+        this.item.push(new TreeviewItem(treeItem));
       }
     }
   }
 
-  getOrganizationHierarchy(): Array<object>{
+  mapTreeViewItem(node: Node): TreeItem {
 
-    return this.root;
+    return {
+      text: node.name ?? 'unknown',
+      value: node,
+      collapsed: false,
+      children: [],
+      checked: false,
+      disabled: false,
+    };
+  }
+
+  mapToTreeItems(): void{
+
+  }
+
+  getOrganizationHierarchy(): TreeviewItem[]{
+
+    return this.item;
   }
 }
