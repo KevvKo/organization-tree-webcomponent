@@ -20,5 +20,5 @@ export class AppModule  implements DoBootstrap{
 
   }
 
-  ngDoBootstrap() {}
+  ngDoBootstrap(): void {}
 }

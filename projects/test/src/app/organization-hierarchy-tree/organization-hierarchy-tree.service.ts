@@ -1,14 +1,15 @@
-import { Injectable, ɵConsole } from '@angular/core';
+import { Injectable} from '@angular/core';
+import { TreeItem, TreeviewItem } from 'ngx-treeview';
+
 import {Node, NodeTree} from './node';
 import json from './tree-mock.json';
-import { TreeItem, TreeviewItem } from 'ngx-treeview';
 @Injectable({
   providedIn: 'root'
 })
 
 export class OrganizationHierarchyTreeService {
 
-  item: TreeviewItem[] = []
+  item: TreeviewItem[] = [];
 
   constructor() {
     this.buildTree();
@@ -78,10 +79,6 @@ export class OrganizationHierarchyTreeService {
       checked: false,
       disabled: false,
     };
-  }
-
-  mapToTreeItems(): void{
-
   }
 
   getOrganizationHierarchy(): TreeviewItem[]{

@@ -1,7 +1,7 @@
-import { Component,  OnInit, ViewChild } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import {OrganizationHierarchyTreeService} from './organization-hierarchy-tree.service';
 
-import {TreeviewItem, TreeviewComponent} from 'ngx-treeview';
+import {TreeviewItem} from 'ngx-treeview';
 
 @Component({
   selector: 'app-organization-hierarchy-tree',
@@ -14,15 +14,8 @@ export class OrganizationHierarchyTreeComponent implements OnInit {
 
       items: TreeviewItem[];
       organizationHierarchy: TreeviewItem;
-      config: {
-        hasAllCheckBox: true,
-        hasFilter: false,
-        hasCollapseExpand: false,
-        decoupleChildFromParent: false,
-        maxHeight: 500
-    }
 
-    ngOnInit(){
+    ngOnInit(): void{
 
         this.getOrganizationHierarchy();
 
