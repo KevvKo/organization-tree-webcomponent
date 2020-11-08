@@ -9,7 +9,7 @@ import json from '../../../../../tree-mock.json';
 
 export class OrganizationHierarchyTreeService {
 
-  item: TreeviewItem[] = [];
+  item: TreeItem;
 
   constructor() {
     this.buildTree();
@@ -64,9 +64,11 @@ export class OrganizationHierarchyTreeService {
 
       } else {
 
-        this.item.push(new TreeviewItem(treeItem));
+        this.item = treeItem;
       }
     }
+
+
   }
 
   mapTreeViewItem(node: Node): TreeItem {
@@ -83,6 +85,6 @@ export class OrganizationHierarchyTreeService {
 
   getOrganizationHierarchy(): TreeviewItem[]{
 
-    return this.item;
+    return [new TreeviewItem( this.item)];
   }
 }
