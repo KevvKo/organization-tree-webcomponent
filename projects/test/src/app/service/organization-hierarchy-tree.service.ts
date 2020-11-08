@@ -1,8 +1,8 @@
 import { Injectable} from '@angular/core';
 import { TreeItem, TreeviewItem } from 'ngx-treeview';
 
-import {Node, NodeTree} from './node';
-import json from './tree-mock.json';
+import {Node, NodeTree} from '../model/node.model';
+import json from '../../../../../tree-mock.json';
 @Injectable({
   providedIn: 'root'
 })

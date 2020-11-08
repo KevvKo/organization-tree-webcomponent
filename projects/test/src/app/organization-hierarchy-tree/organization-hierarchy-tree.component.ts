@@ -1,5 +1,5 @@
 import { Component,  OnInit } from '@angular/core';
-import {OrganizationHierarchyTreeService} from './organization-hierarchy-tree.service';
+import {OrganizationHierarchyTreeService} from '../service/organization-hierarchy-tree.service';
 
 import {TreeviewItem} from 'ngx-treeview';
 
