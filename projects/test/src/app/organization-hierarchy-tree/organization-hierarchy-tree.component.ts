@@ -10,19 +10,19 @@ import {TreeviewItem} from 'ngx-treeview';
 })
 export class OrganizationHierarchyTreeComponent implements OnInit {
 
-      constructor(private organizationHierarchyTreeService: OrganizationHierarchyTreeService) { }
+      constructor(private service: OrganizationHierarchyTreeService) { }
 
       items: TreeviewItem[];
       organizationHierarchy: TreeviewItem;
 
     ngOnInit(): void{
 
-        this.getOrganizationHierarchy();
+        this.getTreeViewItem();
 
     }
 
-    getOrganizationHierarchy(): void {
-        this.items = this.organizationHierarchyTreeService.getOrganizationHierarchy();
+    getTreeViewItem(): void {
+        this.items = this.service.getTreeViewItem();
 
     }
 

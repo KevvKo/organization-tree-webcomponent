@@ -83,7 +83,7 @@ export class OrganizationHierarchyTreeService {
     };
   }
 
-  getOrganizationHierarchy(): TreeviewItem[]{
+  getTreeViewItem(): TreeviewItem[]{
 
     return [new TreeviewItem( this.item)];
   }
