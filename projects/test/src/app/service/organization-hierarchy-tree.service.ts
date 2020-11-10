@@ -19,7 +19,7 @@ export class OrganizationHierarchyTreeService {
 
     // 1. build a simple array, which contains less information
     const nodes: NodeTree[] = [];
-    const trees: TreeItem[] = [];
+    const treeItems: TreeItem[] = [];
 
     json.data.forEach(el => {
 
@@ -41,7 +41,7 @@ export class OrganizationHierarchyTreeService {
 
       const item = this.mapTreeViewItem(nodeElement);
 
-      trees.push(item);
+      treeItems.push(item);
       nodes.push(nodeTree);
     });
 
@@ -56,11 +56,11 @@ export class OrganizationHierarchyTreeService {
     for (let i = 0, l = nodes.length; i < l; i += 1) {
 
       const nodeTree: NodeTree = nodes[i];
-      const treeItem: TreeItem = trees[i];
+      const treeItem: TreeItem = treeItems[i];
 
       if (nodeTree.parentId !== 'unknown') {
 
-        trees[mapIds[nodeTree.parentId]].children.push(treeItem);
+        treeItems[mapIds[nodeTree.parentId]].children.push(treeItem);
 
       } else {
 
