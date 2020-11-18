@@ -9,7 +9,7 @@ import json from '../../../../../tree-mock.json';
 
 export class OrganizationHierarchyTreeService {
 
-  item: TreeItem;
+  private item: TreeItem;
 
   constructor() {
     this.buildTree();
@@ -18,6 +18,7 @@ export class OrganizationHierarchyTreeService {
   buildTree(): void{
 
     // 1. build a simple array, which contains less information
+
     const nodes: NodeTree[] = [];
     const treeItems: TreeItem[] = [];
 

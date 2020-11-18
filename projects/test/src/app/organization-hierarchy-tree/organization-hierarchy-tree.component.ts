@@ -1,4 +1,4 @@
-import { Component,  OnInit } from '@angular/core';
+import { Component,  Input,  OnInit, Output } from '@angular/core';
 import {OrganizationHierarchyTreeService} from '../service/organization-hierarchy-tree.service';
 
 import {TreeviewItem} from 'ngx-treeview';
@@ -10,20 +10,26 @@ import {TreeviewItem} from 'ngx-treeview';
 })
 export class OrganizationHierarchyTreeComponent implements OnInit {
 
-      constructor(private service: OrganizationHierarchyTreeService) { }
+    @Input()
+    get data(): any{ return this._data; }
+    set data(value: any){ this._data = value; }
 
-      items: TreeviewItem[];
-      organizationHierarchy: TreeviewItem;
+    get items(): TreeviewItem[] { return this._items }
+    set items(value: TreeviewItem[]) { this._items = value }
+
+    private _data: any;
+    private _items: TreeviewItem[];
+
+    constructor(private service: OrganizationHierarchyTreeService) { }
 
     ngOnInit(): void{
 
         this.getTreeViewItem();
-
     }
 
     getTreeViewItem(): void {
-        this.items = this.service.getTreeViewItem();
 
+        this.items = this.service.getTreeViewItem();
     }
 
 }
