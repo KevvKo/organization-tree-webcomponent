@@ -10,10 +10,9 @@ import json from '../../../../../tree-mock.json';
 export class OrganizationHierarchyTreeService {
 
   private item: TreeItem;
+  public data: any;
 
-  constructor() {
-    this.buildTree();
-   }
+  constructor() {}
 
   buildTree(): void{
 
@@ -22,7 +21,7 @@ export class OrganizationHierarchyTreeService {
     const nodes: NodeTree[] = [];
     const treeItems: TreeItem[] = [];
 
-    json.data.forEach(el => {
+    this.data.forEach(el => {
 
       const nodeElement: Node = {
         id:     el.id,
@@ -82,6 +81,10 @@ export class OrganizationHierarchyTreeService {
       checked: false,
       disabled: false,
     };
+  }
+
+  setData(val: any): void{
+    this.data = val.data
   }
 
   getTreeViewItem(): TreeviewItem[]{

@@ -10,3 +10,184 @@
   <organization-hierarchy-tree></organization-hierarchy-tree>
 </body>
 </html>
+<script>
+
+  data = {
+
+    "data": [
+      {
+        "type": "node",
+        "id": "OilCorp_France",
+        "attributes": {
+          "description": "The French division of Oil Corp.",
+          "name": "Oil Corp France"
+        },
+        "relationships": {
+          "childNodes": {
+            "data": [
+              {
+                "type": "node",
+                "id": "OilCorp_Paris"
+              }
+            ]
+          },
+          "organization": {
+            "data": {
+              "type": "organization",
+              "id": "OilCorp"
+            }
+          },
+          "parentNode": {
+            "data": {
+              "type": "node",
+              "id": "OilCorp_Root"
+            }
+          }
+        }
+      },
+      {
+        "type": "node",
+        "id": "OilCorp_Jena",
+        "attributes": {
+          "description": "The Jena headquarter of Oil Corp.",
+          "name": "Oil Corp Jena"
+        },
+        "relationships": {
+          "childNodes": {
+            "data": []
+          },
+          "organization": {
+            "data": {
+              "type": "organization",
+              "id": "OilCorp"
+            }
+          },
+          "parentNode": {
+            "data": {
+              "type": "node",
+              "id": "OilCorp_Germany"
+            }
+          }
+        }
+      },
+      {
+        "type": "node",
+        "id": "OilCorp_Germany",
+        "attributes": {
+          "description": "The German division of Oil Corp.",
+          "name": "Oil Corp Germany"
+        },
+        "relationships": {
+          "childNodes": {
+            "data": [
+              {
+                "type": "node",
+                "id": "OilCorp_Jena"
+              },
+              {
+                "type": "node",
+                "id": "OilCorp_Berlin"
+              }
+            ]
+          },
+          "organization": {
+            "data": {
+              "type": "organization",
+              "id": "OilCorp"
+            }
+          },
+          "parentNode": {
+            "data": {
+              "type": "node",
+              "id": "OilCorp_Root"
+            }
+          }
+        }
+      },
+      {
+        "type": "node",
+        "id": "OilCorp_Root",
+        "attributes": {
+          "description": "The company root node of Oil Corp.",
+          "name": "Oil Corp Root"
+        },
+        "relationships": {
+          "childNodes": {
+            "data": [
+              {
+                "type": "node",
+                "id": "OilCorp_France"
+              },
+              {
+                "type": "node",
+                "id": "OilCorp_Germany"
+              }
+            ]
+          },
+          "organization": {
+            "data": {
+              "type": "organization",
+              "id": "OilCorp"
+            }
+          },
+          "parentNode": {
+            "data": null
+          }
+        }
+      },
+      {
+        "type": "node",
+        "id": "OilCorp_Paris",
+        "attributes": {
+          "description": "The Paris headquarter of Oil Corp.",
+          "name": "Oil Corp Paris"
+        },
+        "relationships": {
+          "childNodes": {
+            "data": []
+          },
+          "organization": {
+            "data": {
+              "type": "organization",
+              "id": "OilCorp"
+            }
+          },
+          "parentNode": {
+            "data": {
+              "type": "node",
+              "id": "OilCorp_France"
+            }
+          }
+        }
+      },
+      {
+        "type": "node",
+        "id": "OilCorp_Berlin",
+        "attributes": {
+          "description": "The Berlin headquarter of Oil Corp.",
+          "name": "Oil Corp Berlin"
+        },
+        "relationships": {
+          "childNodes": {
+            "data": []
+          },
+          "organization": {
+            "data": {
+              "type": "organization",
+              "id": "OilCorp"
+            }
+          },
+          "parentNode": {
+            "data": {
+              "type": "node",
+              "id": "OilCorp_Germany"
+            }
+          }
+        }
+      }
+    ]
+  }
+
+  const t = document.querySelector('organization-hierarchy-tree')
+  t.data = data
+</script>
