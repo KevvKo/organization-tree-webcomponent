@@ -21,14 +21,15 @@ export class OrganizationHierarchyTreeComponent implements OnInit {
 
     ngOnInit(): void{
 
-        if(this.data){
+    }
 
-          this.service.setData(this.data);
-          this.service.buildTree();
-          this.getTreeViewItem();
+    ngOnChanges(): void {
+      if(this.data){
 
-        }
-
+        this.service.setData(this.data);
+        this.service.buildTree();
+        this.getTreeViewItem();
+      }
     }
 
     getTreeViewItem(): void {

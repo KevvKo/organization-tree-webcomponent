@@ -67,8 +67,6 @@ export class OrganizationHierarchyTreeService {
         this.item = treeItem;
       }
     }
-
-
   }
 
   mapTreeViewItem(node: Node): TreeItem {
