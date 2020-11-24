@@ -11,29 +11,22 @@ import {TreeviewItem} from 'ngx-treeview';
 export class OrganizationHierarchyTreeComponent implements OnInit {
 
     @Input() public _data: any;
-
-    get items(): TreeviewItem[] { return this._items }
-    set items(value: TreeviewItem[]) { this._items = value }
-
-    private _items: TreeviewItem[];
-
     @Input()
     get data(){ return this._data; }
-    set data(val: any){ this._data = val}
+    set data(val: any){ this._data = val;}
+
+    private _items: TreeviewItem[];
+    get items(): TreeviewItem[] { return this._items; }
+    set items(value: TreeviewItem[]) { this._items = value; }
 
     constructor(private service: OrganizationHierarchyTreeService) { }
 
     ngOnInit(): void{
 
-    }
+      this.service.data = this._data;
+      this.service.buildTree();
+      this.getTreeViewItem();
 
-    ngOnChanges(): void {
-      if(this._data){
-
-        this.service.setData(this._data);
-        this.service.buildTree();
-        this.getTreeViewItem();
-      }
     }
 
     getTreeViewItem(): void {

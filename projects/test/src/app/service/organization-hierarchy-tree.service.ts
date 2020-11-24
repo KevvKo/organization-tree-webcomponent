@@ -10,7 +10,10 @@ import json from '../../../../../tree-mock.json';
 export class OrganizationHierarchyTreeService {
 
   private item: TreeItem;
-  public data: any;
+
+  private _data: any;
+  get data(){ return this._data;}
+  set data(val: any) {this._data = val;}
 
   constructor() {}
 
@@ -79,10 +82,6 @@ export class OrganizationHierarchyTreeService {
       checked: false,
       disabled: false,
     };
-  }
-
-  setData(val: any): void{
-    this.data = val.data
   }
 
   getTreeViewItem(): TreeviewItem[]{
